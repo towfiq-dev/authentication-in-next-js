@@ -1,6 +1,16 @@
-/** @type {import('next').NextConfig} */
+/** @type {import('next').Next} */
 const nextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+        port: '',
+        pathname: '**',
+        search: '',
+      },
+    ],
+  },
 };
 
 export default nextConfig;
