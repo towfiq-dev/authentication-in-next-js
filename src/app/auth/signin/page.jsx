@@ -89,6 +89,7 @@ const SigninPage = () => {
         <InputGroup.Input placeholder='Enter your password'
           className="w-full max-w-[330px]"
           type={isVisible ? "text" : "password"}
+          name='password'
           //value={isVisible ? "87$2h.3diua" : "••••••••"}
         />
         <InputGroup.Suffix className="pr-0">

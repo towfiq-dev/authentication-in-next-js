@@ -1,7 +1,21 @@
+'use client'
+import { signOut, useSession } from '@/lib/auth-client';
 import Link from 'next/link';
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
+  const {data, isPending} = useSession()
+  if (isPending) {
+    return (
+    <div>
+      Loading.....
+    </div>
+    )
+  }
+  //console.log('Navabr' , data);
+  const user = data?.user;
+  
   return (
     <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
   <header className="flex h-16 items-center justify-between px-6">
@@ -13,6 +27,22 @@ const Navbar = () => {
       <li><Link href="#">Features</Link></li>
       <li><Link href="#">Pricing</Link></li>
     </ul>
+    <div>
+      {
+        user? 
+        <>
+        <p>Welcome {user.name}</p>
+        <button onClick={()=> signOut()}
+        className='cursor-pointer font-semibold shadow-md rounded bg-red-500 text-white px-3 py-1'>
+          Sign Out
+        </button>
+        </>
+        :
+        <Link className='font-semibold shadow-md rounded bg-red-500 text-white px-3 py-1' href={'/auth/signin'}>
+        Sign In
+        </Link>
+      }
+    </div>
   </header>
 </nav>
   );
