@@ -3,6 +3,7 @@ import { signOut, useSession } from '@/lib/auth-client';
 import Link from 'next/link';
 import React from 'react';
 import { toast } from 'react-toastify';
+import Structure from './Structure';
 
 const Navbar = () => {
   const {data, isPending} = useSession()
@@ -24,8 +25,9 @@ const Navbar = () => {
       <p className="font-bold">ACME</p>
     </div>
     <ul className="flex items-center gap-4">
-      <li><Link href="#">Features</Link></li>
-      <li><Link href="#">Pricing</Link></li>
+      <Structure href="/">Home</Structure>
+      <Structure href="/about">Pricing</Structure>
+      <Structure href="/dashboard">DashBoard</Structure>
     </ul>
     <div>
       {
